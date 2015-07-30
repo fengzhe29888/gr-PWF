@@ -38,4 +38,5 @@ from pilot_receive import pilot_receive
 from power_adjust import power_adjust
 from weighted_sum_rate import weighted_sum_rate
 from debug_printmsg import debug_printmsg
+from identity_sum_rate import identity_sum_rate
 #

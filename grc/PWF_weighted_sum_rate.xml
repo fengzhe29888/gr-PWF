@@ -4,7 +4,7 @@
   <key>PWF_weighted_sum_rate</key>
   <category>PWF</category>
   <import>import PWF</import>
-  <make>PWF.weighted_sum_rate($nlinks, $nt, $H, $ichn_gain_dB, $weights)</make>
+  <make>PWF.weighted_sum_rate($nlinks, $nt, $Pt, $H, $ichn_gain_dB, $weights, $rfrom_file, $filename)</make>
 
   <param>
     <name>Number of Links (L)</name>
@@ -16,6 +16,11 @@
     <name>TX Antenna Number</name>
     <key>nt</key>
     <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Total Power (Pt)</name>
+    <key>Pt</key>
     <type>int</type>
   </param>
   <param>
@@ -34,6 +39,26 @@
     <key>weights</key>
     <type>raw</type>
   </param>
+  <param>
+    <name>Read Channel From File</name>
+    <key>rfrom_file</key>
+    <value>True</value>
+    <type>enum</type>
+    <option>
+    	<name>Yes</name>
+      	<key>True</key>
+    </option>
+    <option>
+      	<name>No</name>
+      	<key>False</key>
+    </option>
+  </param>
+  <param>
+    <name>File</name>
+    <key>filename</key>
+    <type>file_open</type>
+  </param>
+
 
   <sink>
     <name>in</name>
@@ -45,5 +70,6 @@
   <source>
     <name>out</name>
     <type>float</type>
+    <nports>2</nports>
   </source>
 </block>

@@ -24,5 +24,6 @@ install(FILES
     PWF_pilot_receive.xml
     PWF_power_adjust.xml
     PWF_weighted_sum_rate.xml
-    PWF_debug_printmsg.xml DESTINATION share/gnuradio/grc/blocks
+    PWF_debug_printmsg.xml
+    PWF_identity_sum_rate.xml DESTINATION share/gnuradio/grc/blocks
 )

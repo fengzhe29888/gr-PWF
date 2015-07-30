@@ -26,17 +26,22 @@ class pilot_receive(gr.decim_block):
     """
     docstring for block pilot_receive
     """
-    def __init__(self, pilot_seq,nt,pilot_length,frame_length, weight):
+    def __init__(self, rfrom_file, filename, pilot_seq,nt,pilot_length,frame_length, weight):
         gr.decim_block.__init__(self,
             name="pilot_receive",
             in_sig=[(np.complex64, nt)],
             out_sig=[(np.complex64, nt*nt)], decim=frame_length)
-	self.pilot_seq = pilot_seq
+	#=======================read pilot from file/variable===========================
+	if rfrom_file:	#read pilot from 'filename'
+		f1=open(filename,'rb') #read only in binary format
+		self.pilot_seq = np.fromfile(f1,dtype=np.complex64).reshape(pilot_length,nt)
+	else:	#read pilot generated in a variable block
+		self.pilot_seq = pilot_seq
+	#===============================================================================
 	self.nt = nt
 	self.pilot_length = pilot_length
 	self.frame_length = frame_length
 	self.weight = weight
-	#self.pilotcorr = np.dot(pilot_seq.transpose().conj(),pilot_seq)/pilot_length # 2 x 2 identity 
 	self.scounter = 0 #symbol count
 	self.fcounter = 1 #frame count
 
@@ -49,19 +54,24 @@ class pilot_receive(gr.decim_block):
 	if self.scounter==0: #start of a frame
 		Y = in0[:self.pilot_length]
 		corr = np.true_divide(np.dot(Y.transpose(),self.pilot_seq.conj()),self.pilot_length) #nt x nt
+		#=====================debugging msg========================
 		#print "Pilot detected! Estimated channel = "
 		#print corr
+		#==========================================================
 		A = np.dot(corr,corr.transpose().conj())
 		B = np.true_divide(np.dot(Y.transpose(),Y.conj()),self.pilot_length)
 		Omega = B-A
 		Sigma = np.dot(np.linalg.pinv(Omega)-np.linalg.pinv(B),self.weight) #nt x nt
-		#print "Sigma ="
+		#=====================debugging msg========================
+		#print "Pilot detected! Sigma ="
 		#print Sigma
+		#==========================================================
 		out[0] = Sigma.reshape(self.nt*self.nt)
 	self.scounter = self.scounter + len(in0)
 	if self.scounter==self.frame_length:
-		#print "receive a frame, reset symbol counter"
 		self.fcounter += 1
 		self.scounter = 0
 
         return 1
+
+

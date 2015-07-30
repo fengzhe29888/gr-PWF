@@ -37,7 +37,8 @@ GR_PYTHON_INSTALL(
     pilot_receive.py
     power_adjust.py
     weighted_sum_rate.py
-    debug_printmsg.py DESTINATION ${GR_PYTHON_DIR}/PWF
+    debug_printmsg.py
+    identity_sum_rate.py DESTINATION ${GR_PYTHON_DIR}/PWF
 )
 
 ########################################################################

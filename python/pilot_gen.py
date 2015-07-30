@@ -24,31 +24,34 @@ from gnuradio import gr
 
 class pilot_gen(gr.interp_block):
     """
-    docstring for block pilot_gen
+    For every input Sigma, this block will generate a pilot sequence. You could either read pilot from file generated in Matlab or read pilot sequence from a variable created in GRC.
     """
-    def __init__(self, nt,pilot_length,pilot):
+    def __init__(self, nt,pilot_length,pilot,rfrom_file,filename):
         gr.interp_block.__init__(self,
             name="pilot_gen",
             in_sig=[(np.complex64, nt*nt)],
             out_sig=[(np.complex64, nt)], interp=pilot_length)
 	self.nt = nt
 	self.pilot_length = pilot_length
-	#self.count = 0
-	self.pilot_seq = pilot
+	#=======================read pilot from file/variable===========================
+	if rfrom_file:	#read pilot from 'filename'
+		f1=open(filename,'rb') #read only in binary format
+		self.pilot_seq = np.fromfile(f1,dtype=np.complex64).reshape(pilot_length,nt) #read pilot from file
+	else:	#read pilot generated in a variable block
+		self.pilot_seq = pilot
+	#===============================================================================
+
 
 
     def work(self, input_items, output_items):
         in0 = input_items[0]
         out = output_items[0]
 	Sigma = in0[0].reshape((self.nt,self.nt))
-	
-	#print Sigma
-	U, d, V = np.linalg.svd(Sigma) #SVD, d will a 1-d array, need to convert to a matrix D
+	U, d, V = np.linalg.svd(Sigma) #SVD, d is a 1-d array, need to convert to a matrix D
 	D = np.zeros((self.nt,self.nt))
 	np.fill_diagonal(D,d)
 	pilot_send = np.dot(np.dot(self.pilot_seq, np.sqrt(D)),U.transpose()) #pilot_seq * sqrt(D) * U_transpose
 	for i in range(self.pilot_length):
 		out[i] = pilot_send[i]
-
 
         return self.pilot_length

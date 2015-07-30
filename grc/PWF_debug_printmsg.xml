@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>debug_printmsg</name>
+  <name>debug(set maxit)</name>
   <key>PWF_debug_printmsg</key>
   <category>PWF</category>
   <import>import PWF</import>
-  <make>PWF.debug_printmsg($nlinks, $nt, $is_output)</make>
+  <make>PWF.debug_printmsg($nlinks, $nt, $is_output, $maxit)</make>
 
   <param>
     <name>Number of Links (L)</name>
@@ -31,6 +31,12 @@
       	<name>output</name>
       	<key>True</key>
     </option>
+  </param>
+  <param>
+    <name>Maximum Iteration</name>
+    <key>maxit</key>
+    <value>20</value>
+    <type>int</type>
   </param>
 
   <sink>

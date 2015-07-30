@@ -4,7 +4,7 @@
   <key>PWF_pilot_gen</key>
   <category>PWF</category>
   <import>import PWF</import>
-  <make>PWF.pilot_gen($nt, $pilot_length, $pilot)</make>
+  <make>PWF.pilot_gen($nt, $pilot_length, $pilot, $rfrom_file, $filename)</make>
 
   <param>
     <name>Number of Antennas</name>
@@ -20,6 +20,25 @@
     <name>Pilot Sequence</name>
     <key>pilot</key>
     <type>raw</type>
+  </param>
+  <param>
+    <name>Read Pilot From File</name>
+    <key>rfrom_file</key>
+    <value>True</value>
+    <type>enum</type>
+    <option>
+    	<name>Yes</name>
+      	<key>True</key>
+    </option>
+    <option>
+      	<name>No</name>
+      	<key>False</key>
+    </option>
+  </param>
+  <param>
+    <name>File</name>
+    <key>filename</key>
+    <type>file_open</type>
   </param>
 
 

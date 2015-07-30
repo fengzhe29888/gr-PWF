@@ -26,7 +26,7 @@ class debug_printmsg(gr.sync_block):
     """
     docstring for block debug_printmsg
     """
-    def __init__(self, nlinks,nt,is_output):
+    def __init__(self, nlinks,nt,is_output,maxit):
         gr.sync_block.__init__(self,
             name="debug_printmsg",
             in_sig=[(np.complex64, nt*nt) for i in range(nlinks)],
@@ -34,11 +34,12 @@ class debug_printmsg(gr.sync_block):
 	self.nlinks = nlinks
 	self.nt = nt
 	self.is_output = is_output
+	self.maxit = maxit
 	self.counter = 1
 
 
     def work(self, input_items, output_items):
-	if self.counter >= 20: #maximum iteration
+	if self.counter >= self.maxit: #maximum iteration
 		return -1
 		
 	Sigma = np.zeros((self.nlinks,self.nt,self.nt), dtype = np.complex64)

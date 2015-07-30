@@ -38,7 +38,6 @@ class power_adjust(gr.sync_block):
 
 
     def work(self, input_items, output_items):
-	#print "length of power adjust input 0 size: %d" %len(input_items[0])
 	P = 0
 	Sigma = np.zeros((self.nlinks,self.nt,self.nt), dtype = np.complex64)
 	for l in range(self.nlinks):
@@ -46,8 +45,10 @@ class power_adjust(gr.sync_block):
 		P = P + Sigma[l].trace()
 	alpha = np.true_divide(self.Pt,P)
 	Sigma = np.dot(Sigma,alpha)
-	#print "adjusted Sigma ="
-	#print Sigma
+	#=====================debugging msg========================
+	#print "alpha ="
+	#print alpha
+	#==========================================================
 	
 	for l in range(self.nlinks):
 		output_items[l][0] = Sigma[l].reshape(self.nt*self.nt)	

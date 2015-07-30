@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ASCII'?>
-<?grc format='1' created='3.7.7'?>
+<?grc format='1' created='3.7.6'?>
 <flow_graph>
   <timestamp>Thu Mar 12 17:22:20 2015</timestamp>
   <block>
@@ -30,7 +30,7 @@
     </param>
     <param>
       <key>generate_options</key>
-      <value>no_gui</value>
+      <value>qt_gui</value>
     </param>
     <param>
       <key>category</key>
@@ -69,6 +69,114 @@
     <key>variable</key>
     <param>
       <key>id</key>
+      <value>ichn_gain_dB</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(560, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pilot2file</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>'/home/haili/Documents/SDR Project/Simulation/pilots/pilot2_4000.bin'</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(520, 75)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pilot1file</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>'/home/haili/Documents/SDR Project/Simulation/pilots/pilot1_4000.bin'</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(352, 75)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>sigmagenfile</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>'/home/haili/Documents/SDR Project/Simulation/sigmagens/sigmagen_3.bin'</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(176, 75)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
       <value>samp_rate</value>
     </param>
     <param>
@@ -77,7 +185,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>32000</value>
+      <value>100000</value>
     </param>
     <param>
       <key>alias</key>
@@ -85,7 +193,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(264, 11)</value>
+      <value>(144, 723)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -96,7 +204,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>A</value>
+      <value>interpo</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -104,7 +212,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>np.arange(Nt)[np.newaxis]</value>
+      <value>samp_rate/1000</value>
     </param>
     <param>
       <key>alias</key>
@@ -112,7 +220,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(352, 99)</value>
+      <value>(232, 723)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -123,7 +231,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>scramble_1</value>
+      <value>npoints</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -131,7 +239,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>2*np.random.random_integers(0,1,size=(tlen,Nt))-1</value>
+      <value>max_iteration*interpo</value>
     </param>
     <param>
       <key>alias</key>
@@ -139,7 +247,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 99)</value>
+      <value>(304, 723)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -150,7 +258,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>dft_coef</value>
+      <value>max_iteration</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -158,7 +266,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>np.exp(-2*np.pi*1j/Nt)</value>
+      <value>20</value>
     </param>
     <param>
       <key>alias</key>
@@ -166,7 +274,34 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 99)</value>
+      <value>(528, 411)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>channelfile</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>'/home/haili/Documents/SDR Project/Simulation/channels/2x2channel_10dB_3.bin'</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(8, 75)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -193,88 +328,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(712, 99)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>scramble_2</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>2*np.random.random_integers(0,1,size=(tlen,Nt))-1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1032, 99)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>pilot_seq_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>np.multiply(dft_pilot_seq,scramble_1)</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(864, 163)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>pilot_seq_2</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>np.multiply(dft_pilot_seq,scramble_2)</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1040, 163)</value>
+      <value>(1432, 11)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -301,7 +355,169 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(552, 99)</value>
+      <value>(1272, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>A</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>np.arange(Nt)[np.newaxis]</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1056, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>dft_coef</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>np.exp(-2*np.pi*1j/Nt)</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1136, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>scramble_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>2*np.random.random_integers(0,1,size=(tlen,Nt))-1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1176, 75)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>scramble_2</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>2*np.random.random_integers(0,1,size=(tlen,Nt))-1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1352, 75)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pilot_seq_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>np.multiply(dft_pilot_seq,scramble_1)</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1176, 139)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pilot_seq_2</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>np.multiply(dft_pilot_seq,scramble_2)</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1352, 139)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -328,7 +544,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(824, 11)</value>
+      <value>(856, 11)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -339,61 +555,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>ichn_gain_dB</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(624, 11)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>Pt</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(352, 11)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>L</value>
+      <value>Nt</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -420,7 +582,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>Nt</value>
+      <value>L</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -436,7 +598,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(488, 11)</value>
+      <value>(360, 11)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -463,7 +625,34 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(552, 11)</value>
+      <value>(488, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>Pt</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(288, 11)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -490,54 +679,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(720, 11)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_power_adjust</key>
-    <param>
-      <key>id</key>
-      <value>PWF_power_adjust_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nlinks</key>
-      <value>L</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>Pt</key>
-      <value>Pt</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1088, 584)</value>
+      <value>(656, 11)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -564,293 +706,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(176, 11)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_pilot_gen</key>
-    <param>
-      <key>id</key>
-      <value>PWF_pilot_gen_2</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>pilot_length</key>
-      <value>tlen</value>
-    </param>
-    <param>
-      <key>pilot</key>
-      <value>pilot_seq_1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1320, 491)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_pilot_gen</key>
-    <param>
-      <key>id</key>
-      <value>PWF_pilot_gen_3</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>pilot_length</key>
-      <value>tlen</value>
-    </param>
-    <param>
-      <key>pilot</key>
-      <value>pilot_seq_2</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1312, 667)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_pilot_gen</key>
-    <param>
-      <key>id</key>
-      <value>PWF_pilot_gen_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>pilot_length</key>
-      <value>tlen</value>
-    </param>
-    <param>
-      <key>pilot</key>
-      <value>pilot_seq_2</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(320, 739)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_debug_printmsg</key>
-    <param>
-      <key>id</key>
-      <value>PWF_debug_printmsg_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nlinks</key>
-      <value>L</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>is_output</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(384, 640)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_vector_to_streams</key>
-    <param>
-      <key>id</key>
-      <value>blocks_vector_to_streams_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>4</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(64, 640)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_sigmagen</key>
-    <param>
-      <key>id</key>
-      <value>PWF_sigmagen_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nlinks</key>
-      <value>L</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>Pt</key>
-      <value>Pt</value>
-    </param>
-    <param>
-      <key>gen_once</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(32, 291)</value>
+      <value>(168, 11)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -897,7 +753,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(264, 296)</value>
+      <value>(272, 168)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -948,7 +804,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(464, 275)</value>
+      <value>(456, 147)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1007,7 +863,54 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(32, 491)</value>
+      <value>(16, 251)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_vector_to_streams</key>
+    <param>
+      <key>id</key>
+      <value>blocks_vector_to_streams_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>4</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(56, 408)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1018,7 +921,7 @@
     <key>PWF_pilot_gen</key>
     <param>
       <key>id</key>
-      <value>PWF_pilot_gen_0</value>
+      <value>PWF_pilot_gen_1</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -1034,7 +937,15 @@
     </param>
     <param>
       <key>pilot</key>
-      <value>pilot_seq_1</value>
+      <value>pilot_seq_2</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>pilot2file</value>
     </param>
     <param>
       <key>alias</key>
@@ -1054,109 +965,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(320, 531)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_stream_mux</key>
-    <param>
-      <key>id</key>
-      <value>blocks_stream_mux_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>lengths</key>
-      <value>tlen, payload_size</value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(576, 424)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_null_source</key>
-    <param>
-      <key>id</key>
-      <value>blocks_null_source_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>num_outputs</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>bus_conns</key>
-      <value>[[0,],]</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(576, 499)</value>
+      <value>(392, 515)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1207,7 +1016,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(568, 875)</value>
+      <value>(696, 579)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1258,7 +1067,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(568, 800)</value>
+      <value>(848, 552)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1266,30 +1075,42 @@
     </param>
   </block>
   <block>
-    <key>blocks_stream_mux</key>
+    <key>PWF_pilot_receive</key>
     <param>
       <key>id</key>
-      <value>blocks_stream_mux_1_2</value>
+      <value>PWF_pilot_receive_0</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
-      <key>type</key>
-      <value>complex</value>
+      <key>rfrom_file</key>
+      <value>True</value>
     </param>
     <param>
-      <key>lengths</key>
-      <value>tlen, payload_size</value>
+      <key>filename</key>
+      <value>pilot1file</value>
     </param>
     <param>
-      <key>num_inputs</key>
-      <value>2</value>
+      <key>pilot_seq</key>
+      <value>pilot_seq_1</value>
     </param>
     <param>
-      <key>vlen</key>
+      <key>nt</key>
       <value>Nt</value>
+    </param>
+    <param>
+      <key>pilot_length</key>
+      <value>tlen</value>
+    </param>
+    <param>
+      <key>frame_length</key>
+      <value>tlen+payload_size</value>
+    </param>
+    <param>
+      <key>weight</key>
+      <value>1</value>
     </param>
     <param>
       <key>alias</key>
@@ -1309,7 +1130,274 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1272, 1240)</value>
+      <value>(1104, 291)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_pilot_receive</key>
+    <param>
+      <key>id</key>
+      <value>PWF_pilot_receive_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>pilot2file</value>
+    </param>
+    <param>
+      <key>pilot_seq</key>
+      <value>pilot_seq_2</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>pilot_length</key>
+      <value>tlen</value>
+    </param>
+    <param>
+      <key>frame_length</key>
+      <value>tlen+payload_size</value>
+    </param>
+    <param>
+      <key>weight</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1104, 435)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_power_adjust</key>
+    <param>
+      <key>id</key>
+      <value>PWF_power_adjust_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nlinks</key>
+      <value>L</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>Pt</key>
+      <value>Pt</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1360, 400)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_repeat</key>
+    <param>
+      <key>id</key>
+      <value>blocks_repeat_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>interp</key>
+      <value>interpo</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(64, 675)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_repeat</key>
+    <param>
+      <key>id</key>
+      <value>blocks_repeat_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>interp</key>
+      <value>interpo</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(64, 635)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_pilot_receive</key>
+    <param>
+      <key>id</key>
+      <value>PWF_pilot_receive_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>pilot2file</value>
+    </param>
+    <param>
+      <key>pilot_seq</key>
+      <value>pilot_seq_2</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>pilot_length</key>
+      <value>tlen</value>
+    </param>
+    <param>
+      <key>frame_length</key>
+      <value>tlen+payload_size</value>
+    </param>
+    <param>
+      <key>weight</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(448, 939)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1317,30 +1405,42 @@
     </param>
   </block>
   <block>
-    <key>blocks_null_source</key>
+    <key>PWF_pilot_receive</key>
     <param>
       <key>id</key>
-      <value>blocks_null_source_1_2</value>
+      <value>PWF_pilot_receive_1_0</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
-      <key>type</key>
-      <value>complex</value>
+      <key>rfrom_file</key>
+      <value>True</value>
     </param>
     <param>
-      <key>vlen</key>
+      <key>filename</key>
+      <value>pilot1file</value>
+    </param>
+    <param>
+      <key>pilot_seq</key>
+      <value>pilot_seq_1</value>
+    </param>
+    <param>
+      <key>nt</key>
       <value>Nt</value>
     </param>
     <param>
-      <key>num_outputs</key>
-      <value>1</value>
+      <key>pilot_length</key>
+      <value>tlen</value>
     </param>
     <param>
-      <key>bus_conns</key>
-      <value>[[0,],]</value>
+      <key>frame_length</key>
+      <value>tlen+payload_size</value>
+    </param>
+    <param>
+      <key>weight</key>
+      <value>1</value>
     </param>
     <param>
       <key>alias</key>
@@ -1360,7 +1460,117 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1272, 1187)</value>
+      <value>(448, 787)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_pilot_gen</key>
+    <param>
+      <key>id</key>
+      <value>PWF_pilot_gen_2</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>pilot_length</key>
+      <value>tlen</value>
+    </param>
+    <param>
+      <key>pilot</key>
+      <value>pilot_seq_1</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>pilot1file</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1312, 955)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_pilot_gen</key>
+    <param>
+      <key>id</key>
+      <value>PWF_pilot_gen_3</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>pilot_length</key>
+      <value>tlen</value>
+    </param>
+    <param>
+      <key>pilot</key>
+      <value>pilot_seq_2</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>pilot2file</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1312, 795)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1411,7 +1621,109 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1264, 1011)</value>
+      <value>(1000, 963)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_stream_mux</key>
+    <param>
+      <key>id</key>
+      <value>blocks_stream_mux_1_2</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>lengths</key>
+      <value>tlen, payload_size</value>
+    </param>
+    <param>
+      <key>num_inputs</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(992, 800)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_null_source</key>
+    <param>
+      <key>id</key>
+      <value>blocks_null_source_1_2</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>num_outputs</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>bus_conns</key>
+      <value>[[0,],]</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(992, 747)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1462,7 +1774,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1264, 1056)</value>
+      <value>(1000, 1016)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1470,30 +1782,26 @@
     </param>
   </block>
   <block>
-    <key>blocks_throttle</key>
+    <key>PWF_power_adjust</key>
     <param>
       <key>id</key>
-      <value>blocks_throttle_0</value>
+      <value>PWF_power_adjust_1_0</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
-      <key>type</key>
-      <value>complex</value>
+      <key>nlinks</key>
+      <value>L</value>
     </param>
     <param>
-      <key>samples_per_second</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>vlen</key>
+      <key>nt</key>
       <value>Nt</value>
     </param>
     <param>
-      <key>ignoretag</key>
-      <value>True</value>
+      <key>Pt</key>
+      <value>Pt</value>
     </param>
     <param>
       <key>alias</key>
@@ -1513,11 +1821,565 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(816, 427)</value>
+      <value>(176, 896)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_stream_mux</key>
+    <param>
+      <key>id</key>
+      <value>blocks_stream_mux_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>lengths</key>
+      <value>tlen, payload_size</value>
+    </param>
+    <param>
+      <key>num_inputs</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(848, 296)</value>
     </param>
     <param>
       <key>_rotation</key>
       <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_null_source</key>
+    <param>
+      <key>id</key>
+      <value>blocks_null_source_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>num_outputs</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>bus_conns</key>
+      <value>[[0,],]</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(688, 323)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_streams_to_vector</key>
+    <param>
+      <key>id</key>
+      <value>blocks_streams_to_vector_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>4</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(56, 1016)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_pilot_gen</key>
+    <param>
+      <key>id</key>
+      <value>PWF_pilot_gen_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>pilot_length</key>
+      <value>tlen</value>
+    </param>
+    <param>
+      <key>pilot</key>
+      <value>pilot_seq_1</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>pilot1file</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(392, 259)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_sigmagen</key>
+    <param>
+      <key>id</key>
+      <value>PWF_sigmagen_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nlinks</key>
+      <value>L</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>Pt</key>
+      <value>Pt</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>sigmagenfile</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(16, 155)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_channel</key>
+    <param>
+      <key>id</key>
+      <value>PWF_channel_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nlinks</key>
+      <value>L</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>ichn_gain_dB</key>
+      <value>ichn_gain_dB</value>
+    </param>
+    <param>
+      <key>H</key>
+      <value>channel</value>
+    </param>
+    <param>
+      <key>is_forward</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>channelfile</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(760, 379)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_channel</key>
+    <param>
+      <key>id</key>
+      <value>PWF_channel_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nlinks</key>
+      <value>L</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>ichn_gain_dB</key>
+      <value>ichn_gain_dB</value>
+    </param>
+    <param>
+      <key>H</key>
+      <value>channel</value>
+    </param>
+    <param>
+      <key>is_forward</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>channelfile</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(760, 867)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_udp_sink</key>
+    <param>
+      <key>id</key>
+      <value>blocks_udp_sink_1_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>ipaddr</key>
+      <value>127.0.0.1</value>
+    </param>
+    <param>
+      <key>port</key>
+      <value>1234</value>
+    </param>
+    <param>
+      <key>psize</key>
+      <value>1472</value>
+    </param>
+    <param>
+      <key>eof</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>8</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(248, 1083)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_debug_printmsg</key>
+    <param>
+      <key>id</key>
+      <value>PWF_debug_printmsg_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nlinks</key>
+      <value>L</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>is_output</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>maxit</key>
+      <value>max_iteration</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(344, 403)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>PWF_weighted_sum_rate</key>
+    <param>
+      <key>id</key>
+      <value>PWF_weighted_sum_rate_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nlinks</key>
+      <value>L</value>
+    </param>
+    <param>
+      <key>nt</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>Pt</key>
+      <value>Pt</value>
+    </param>
+    <param>
+      <key>H</key>
+      <value>channel</value>
+    </param>
+    <param>
+      <key>ichn_gain_dB</key>
+      <value>ichn_gain_dB</value>
+    </param>
+    <param>
+      <key>weights</key>
+      <value>[1,1]</value>
+    </param>
+    <param>
+      <key>rfrom_file</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>filename</key>
+      <value>channelfile</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(64, 491)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
     </param>
   </block>
   <block>
@@ -1528,7 +2390,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>type</key>
@@ -1536,11 +2398,11 @@
     </param>
     <param>
       <key>name</key>
-      <value>""</value>
+      <value>"Strong Interference (ichn_gain = 10dB)"</value>
     </param>
     <param>
       <key>ylabel</key>
-      <value>Amplitude</value>
+      <value>Weighted Sum-Rate (bits/s/Hz)</value>
     </param>
     <param>
       <key>yunit</key>
@@ -1548,11 +2410,11 @@
     </param>
     <param>
       <key>size</key>
-      <value>20</value>
+      <value>npoints</value>
     </param>
     <param>
       <key>srate</key>
-      <value>1000</value>
+      <value>samp_rate</value>
     </param>
     <param>
       <key>grid</key>
@@ -1572,7 +2434,7 @@
     </param>
     <param>
       <key>nconnections</key>
-      <value>1</value>
+      <value>2</value>
     </param>
     <param>
       <key>update_time</key>
@@ -1588,7 +2450,7 @@
     </param>
     <param>
       <key>tr_mode</key>
-      <value>qtgui.TRIG_MODE_FREE</value>
+      <value>qtgui.TRIG_MODE_AUTO</value>
     </param>
     <param>
       <key>tr_slope</key>
@@ -1612,7 +2474,7 @@
     </param>
     <param>
       <key>label1</key>
-      <value></value>
+      <value>Dual Link</value>
     </param>
     <param>
       <key>width1</key>
@@ -1636,7 +2498,7 @@
     </param>
     <param>
       <key>label2</key>
-      <value></value>
+      <value>Identity Sigma</value>
     </param>
     <param>
       <key>width2</key>
@@ -1860,627 +2722,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(88, 915)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_streams_to_vector</key>
-    <param>
-      <key>id</key>
-      <value>blocks_streams_to_vector_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>4</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(192, 1360)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_udp_sink</key>
-    <param>
-      <key>id</key>
-      <value>blocks_udp_sink_1_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>ipaddr</key>
-      <value>127.0.0.1</value>
-    </param>
-    <param>
-      <key>port</key>
-      <value>1234</value>
-    </param>
-    <param>
-      <key>psize</key>
-      <value>1472</value>
-    </param>
-    <param>
-      <key>eof</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>8</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(392, 1339)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_power_adjust</key>
-    <param>
-      <key>id</key>
-      <value>PWF_power_adjust_1_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nlinks</key>
-      <value>L</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>Pt</key>
-      <value>Pt</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(192, 1120)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>180</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_debug_printmsg</key>
-    <param>
-      <key>id</key>
-      <value>PWF_debug_printmsg_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>nlinks</key>
-      <value>L</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>is_output</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(192, 1224)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_channel</key>
-    <param>
-      <key>id</key>
-      <value>PWF_channel_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nlinks</key>
-      <value>L</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>ichn_gain_dB</key>
-      <value>ichn_gain_dB</value>
-    </param>
-    <param>
-      <key>H</key>
-      <value>channel</value>
-    </param>
-    <param>
-      <key>is_forward</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(736, 1107)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>180</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_weighted_sum_rate</key>
-    <param>
-      <key>id</key>
-      <value>PWF_weighted_sum_rate_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nlinks</key>
-      <value>L</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>H</key>
-      <value>channel</value>
-    </param>
-    <param>
-      <key>ichn_gain_dB</key>
-      <value>ichn_gain_dB</value>
-    </param>
-    <param>
-      <key>weights</key>
-      <value>[1,1]</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(56, 728)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>180</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_null_sink</key>
-    <param>
-      <key>id</key>
-      <value>blocks_null_sink_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>bus_conns</key>
-      <value>[[0,],]</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(104, 872)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>180</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_pilot_receive</key>
-    <param>
-      <key>id</key>
-      <value>PWF_pilot_receive_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>pilot_seq</key>
-      <value>pilot_seq_2</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>pilot_length</key>
-      <value>tlen</value>
-    </param>
-    <param>
-      <key>frame_length</key>
-      <value>tlen+payload_size</value>
-    </param>
-    <param>
-      <key>weight</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1040, 723)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_pilot_receive</key>
-    <param>
-      <key>id</key>
-      <value>PWF_pilot_receive_1_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>pilot_seq</key>
-      <value>pilot_seq_1</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>pilot_length</key>
-      <value>tlen</value>
-    </param>
-    <param>
-      <key>frame_length</key>
-      <value>tlen+payload_size</value>
-    </param>
-    <param>
-      <key>weight</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(424, 1043)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>180</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_pilot_receive</key>
-    <param>
-      <key>id</key>
-      <value>PWF_pilot_receive_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>pilot_seq</key>
-      <value>pilot_seq_2</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>pilot_length</key>
-      <value>tlen</value>
-    </param>
-    <param>
-      <key>frame_length</key>
-      <value>tlen+payload_size</value>
-    </param>
-    <param>
-      <key>weight</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(424, 1155)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>180</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_pilot_receive</key>
-    <param>
-      <key>id</key>
-      <value>PWF_pilot_receive_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>pilot_seq</key>
-      <value>pilot_seq_1</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>pilot_length</key>
-      <value>tlen</value>
-    </param>
-    <param>
-      <key>frame_length</key>
-      <value>tlen+payload_size</value>
-    </param>
-    <param>
-      <key>weight</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1040, 411)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>PWF_channel</key>
-    <param>
-      <key>id</key>
-      <value>PWF_channel_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nlinks</key>
-      <value>L</value>
-    </param>
-    <param>
-      <key>nt</key>
-      <value>Nt</value>
-    </param>
-    <param>
-      <key>ichn_gain_dB</key>
-      <value>ichn_gain_dB</value>
-    </param>
-    <param>
-      <key>H</key>
-      <value>channel</value>
-    </param>
-    <param>
-      <key>is_forward</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(736, 595)</value>
+      <value>(256, 627)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2488,14 +2730,20 @@
     </param>
   </block>
   <connection>
-    <source_block_id>blocks_throttle_0</source_block_id>
-    <sink_block_id>PWF_pilot_receive_0</sink_block_id>
+    <source_block_id>PWF_sigmagen_0</source_block_id>
+    <sink_block_id>blocks_streams_to_vector_0</sink_block_id>
+    <source_key>1</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_streams_to_vector_0</source_block_id>
+    <sink_block_id>blocks_udp_sink_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>PWF_pilot_receive_0</source_block_id>
-    <sink_block_id>PWF_power_adjust_1</sink_block_id>
+    <source_block_id>PWF_sigmagen_0</source_block_id>
+    <sink_block_id>blocks_streams_to_vector_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2506,39 +2754,9 @@
     <sink_key>1</sink_key>
   </connection>
   <connection>
-    <source_block_id>PWF_power_adjust_1</source_block_id>
-    <sink_block_id>PWF_pilot_gen_2</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_power_adjust_1</source_block_id>
-    <sink_block_id>PWF_pilot_gen_3</sink_block_id>
-    <source_key>1</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_pilot_gen_3</source_block_id>
-    <sink_block_id>blocks_stream_mux_1_2</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_channel_0</source_block_id>
-    <sink_block_id>PWF_pilot_receive_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>PWF_channel_0</source_block_id>
     <sink_block_id>PWF_pilot_receive_1</sink_block_id>
     <source_key>1</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_channel_0</source_block_id>
-    <sink_block_id>blocks_throttle_0</sink_block_id>
-    <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
@@ -2560,22 +2778,10 @@
     <sink_key>1</sink_key>
   </connection>
   <connection>
-    <source_block_id>PWF_debug_printmsg_0</source_block_id>
-    <sink_block_id>PWF_pilot_gen_1</sink_block_id>
-    <source_key>1</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>PWF_pilot_gen_1</source_block_id>
     <sink_block_id>PWF_channel_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_pilot_gen_2</source_block_id>
-    <sink_block_id>blocks_stream_mux_1_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>PWF_pilot_gen_0</source_block_id>
@@ -2590,24 +2796,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_stream_mux_1</source_block_id>
-    <sink_block_id>PWF_channel_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_pilot_gen_0</source_block_id>
-    <sink_block_id>blocks_stream_mux_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_weighted_sum_rate_0</source_block_id>
-    <sink_block_id>blocks_null_sink_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>blocks_vector_to_streams_0</source_block_id>
     <sink_block_id>PWF_weighted_sum_rate_0</sink_block_id>
     <source_key>0</source_key>
@@ -2620,78 +2808,6 @@
     <sink_key>1</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_streams_to_vector_0</source_block_id>
-    <sink_block_id>blocks_udp_sink_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_sigmagen_0</source_block_id>
-    <sink_block_id>blocks_streams_to_vector_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_sigmagen_0</source_block_id>
-    <sink_block_id>blocks_streams_to_vector_0</sink_block_id>
-    <source_key>1</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_null_source_1</source_block_id>
-    <sink_block_id>blocks_stream_mux_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_pilot_gen_1</source_block_id>
-    <sink_block_id>blocks_stream_mux_1_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_null_source_1_0</source_block_id>
-    <sink_block_id>blocks_stream_mux_1_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_stream_mux_1_0</source_block_id>
-    <sink_block_id>PWF_channel_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_null_source_1_2</source_block_id>
-    <sink_block_id>blocks_stream_mux_1_2</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_null_source_1_1</source_block_id>
-    <sink_block_id>blocks_stream_mux_1_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_weighted_sum_rate_0</source_block_id>
-    <sink_block_id>qtgui_time_sink_x_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_stream_mux_1_1</source_block_id>
-    <sink_block_id>PWF_channel_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_stream_mux_1_2</source_block_id>
-    <sink_block_id>PWF_channel_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
     <source_block_id>PWF_power_adjust_1_0</source_block_id>
     <sink_block_id>blocks_streams_to_vector_0_0</sink_block_id>
     <source_key>1</source_key>
@@ -2700,42 +2816,6 @@
   <connection>
     <source_block_id>PWF_power_adjust_1_0</source_block_id>
     <sink_block_id>blocks_streams_to_vector_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_pilot_gen_3</source_block_id>
-    <sink_block_id>PWF_channel_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_pilot_gen_2</source_block_id>
-    <sink_block_id>PWF_channel_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_debug_printmsg_1</source_block_id>
-    <sink_block_id>blocks_streams_to_vector_0_0</sink_block_id>
-    <source_key>1</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_debug_printmsg_1</source_block_id>
-    <sink_block_id>blocks_streams_to_vector_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_power_adjust_1_0</source_block_id>
-    <sink_block_id>PWF_debug_printmsg_1</sink_block_id>
-    <source_key>1</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>PWF_power_adjust_1_0</source_block_id>
-    <sink_block_id>PWF_debug_printmsg_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2758,15 +2838,153 @@
     <sink_key>1</sink_key>
   </connection>
   <connection>
-    <source_block_id>PWF_channel_1</source_block_id>
-    <sink_block_id>PWF_pilot_receive_0_0</sink_block_id>
+    <source_block_id>PWF_weighted_sum_rate_0</source_block_id>
+    <sink_block_id>blocks_repeat_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_debug_printmsg_0</source_block_id>
+    <sink_block_id>PWF_pilot_gen_1</sink_block_id>
     <source_key>1</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_stream_mux_1_0</source_block_id>
+    <sink_block_id>PWF_channel_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_channel_0</source_block_id>
+    <sink_block_id>PWF_pilot_receive_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_pilot_receive_0</source_block_id>
+    <sink_block_id>PWF_power_adjust_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_weighted_sum_rate_0</source_block_id>
+    <sink_block_id>blocks_repeat_0_0</sink_block_id>
+    <source_key>1</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_null_source_1_0</source_block_id>
+    <sink_block_id>blocks_stream_mux_1_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_pilot_gen_1</source_block_id>
+    <sink_block_id>blocks_stream_mux_1_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_null_source_1</source_block_id>
+    <sink_block_id>blocks_stream_mux_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_pilot_gen_0</source_block_id>
+    <sink_block_id>blocks_stream_mux_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_stream_mux_1</source_block_id>
+    <sink_block_id>PWF_channel_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_repeat_0_0</source_block_id>
+    <sink_block_id>qtgui_time_sink_x_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_repeat_0</source_block_id>
+    <sink_block_id>qtgui_time_sink_x_0</sink_block_id>
+    <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>PWF_channel_1</source_block_id>
     <sink_block_id>PWF_pilot_receive_1_0</sink_block_id>
     <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_channel_1</source_block_id>
+    <sink_block_id>PWF_pilot_receive_0_0</sink_block_id>
+    <source_key>1</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_pilot_gen_2</source_block_id>
+    <sink_block_id>blocks_stream_mux_1_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_pilot_gen_3</source_block_id>
+    <sink_block_id>PWF_channel_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_pilot_gen_2</source_block_id>
+    <sink_block_id>PWF_channel_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_null_source_1_1</source_block_id>
+    <sink_block_id>blocks_stream_mux_1_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_stream_mux_1_1</source_block_id>
+    <sink_block_id>PWF_channel_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_stream_mux_1_2</source_block_id>
+    <sink_block_id>PWF_channel_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_null_source_1_2</source_block_id>
+    <sink_block_id>blocks_stream_mux_1_2</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_pilot_gen_3</source_block_id>
+    <sink_block_id>blocks_stream_mux_1_2</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_power_adjust_1</source_block_id>
+    <sink_block_id>PWF_pilot_gen_2</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_power_adjust_1</source_block_id>
+    <sink_block_id>PWF_pilot_gen_3</sink_block_id>
+    <source_key>1</source_key>
     <sink_key>0</sink_key>
   </connection>
 </flow_graph>

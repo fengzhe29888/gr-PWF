@@ -22,69 +22,43 @@
 import numpy as np
 from gnuradio import gr
 
-class weighted_sum_rate(gr.sync_block):
+class identity_sum_rate(gr.sync_block):
     """
-    docstring for block weighted_sum_rate
+    docstring for block identity_sum_rate
     """
-    def __init__(self, nlinks,nt,Pt,H,ichn_gain_dB,weights,rfrom_file,filename):
+    def __init__(self, nlinks,nt,H,ichn_gain_dB,weights,rfrom_file,filename):
         gr.sync_block.__init__(self,
-            name="weighted_sum_rate",
-            in_sig=[(np.complex64, nt*nt) for i in range(nlinks)], #input Sigma
-            out_sig=[(np.float32),(np.float32)]) #output rate
+            name="identity_sum_rate",
+            in_sig=None,
+            out_sig=[np.float32])
 	self.nlinks = nlinks
 	self.nt = nt
 	self.Sigma = np.zeros((nlinks,nt,nt), dtype=np.complex64)
 	self.Omega = np.zeros((nlinks,nt,nt), dtype=np.complex64)
 	self.A = np.zeros((nlinks,nt,nt), dtype=np.complex64)
-	self.counter = 1
+	#self.counter = 1
 	self.weights = weights
 	ichn_gain = np.sqrt(np.power(10,np.true_divide(ichn_gain_dB,10))) #convert dB to linear
-	#======================read channel from file/variable============================
 	self.H = np.zeros((nlinks,nlinks,nt,nt), dtype = np.complex64)
-	if rfrom_file:	#read channel from 'filename'
+	if rfrom_file:
+	#read channel from 'filename'
 		f1=open(filename,'rb')
 		content = np.fromfile(f1,dtype=np.complex64).reshape(4,4,order='F')
 		for l in range(nlinks):
 			for k in range(nlinks):
 				for m in range(nt):
 					self.H[l][k][m] = content[l*nt+m][k*nt:(k+1)*nt]
-	else:	#read random channel H generated in a variable block
+	else:
+	#read random channel H generated in a variable block
 		for k in range(nlinks):
 			for l in range(nlinks):
 				if k!=l:
 					self.H[k][l] = np.dot(H[k][l],ichn_gain) #interference channel gain
 				else:
 					self.H[k][l] = H[k][l]
-	#=================================================================================
-	#====================evaluate rate using identity Sigma===========================
-	Sigma_I = np.zeros((nlinks,nt,nt), dtype=np.complex64)
-	Omega_I = np.zeros((nlinks,nt,nt), dtype=np.complex64)
-	A_I = np.zeros((nlinks,nt,nt), dtype=np.complex64)
-	alpha_I = np.true_divide(Pt,nlinks*nt) #trace sum = nlinks*nt 
-	for l in range(nlinks):
-		Sigma_I[l] = np.dot(np.identity(nt,dtype=np.complex64),alpha_I) #adjust power
-	for l in range(nlinks):
-		Omega_I[l] = np.identity(nt,dtype=np.complex64)
-		for k in range(nlinks):
-			if k!=l:
-				tmp_I = np.dot(self.H[l][k],Sigma_I[k])
-				Omega_I[l] = Omega_I[l] + np.dot(tmp_I,self.H[l][k].transpose().conj())
-	R_I = 0
-	for l in range(nlinks):
-		A_I[l] = np.dot(np.dot(self.H[l][l],Sigma_I[l]),self.H[l][l].transpose().conj())
-		R_I = R_I + np.dot(weights[l],np.log2(np.linalg.det(Omega_I[l]+A_I[l]))-np.log2(np.linalg.det(Omega_I[l])))
-	self.R_I = np.real(R_I)
-	print "Rate with Identity Sigma = %8.4f" %self.R_I
-	#==================================================================================
-
-
-    def work(self, input_items, output_items):
+	
 	for l in range(self.nlinks):
-		self.Sigma[l] = input_items[l][0].reshape((self.nt,self.nt))
-		#=====================debugging msg=========================
-		#print "Sigma[%d] in iteration %d =" %(l,self.counter)
-		#print self.Sigma[l]
-		#===========================================================
+		self.Sigma[l] = np.identity(self.nt,dtype=np.complex64)
 
 	for l in range(self.nlinks):
 		self.Omega[l] = np.identity(self.nt,dtype=np.complex64)
@@ -92,16 +66,22 @@ class weighted_sum_rate(gr.sync_block):
 			if k!=l:
 				tmp = np.dot(self.H[l][k],self.Sigma[k])
 				self.Omega[l] = self.Omega[l] + np.dot(tmp,self.H[l][k].transpose().conj())
-
 	R = 0
 	for l in range(self.nlinks):
 		self.A[l] = np.dot(np.dot(self.H[l][l],self.Sigma[l]),self.H[l][l].transpose().conj())
 		R = R + np.dot(self.weights[l],np.log2(np.linalg.det(self.Omega[l]+self.A[l]))-np.log2(np.linalg.det(self.Omega[l])))
 
-	output_items[0][0] = np.real(R)
-	output_items[1][0] = self.R_I
-	print "rate = %8.4f in iteration %d" %(output_items[0][0],self.counter)
-	self.counter += 1
+	self.R = np.real(R)
+	print "identity rate = %8.4f" %self.R
+	self.sent = False
 
-	return 1
+
+
+    def work(self, input_items, output_items):
+        out = output_items[0]
+        if self.sent:
+		return -1
+        out[:][0] = self.R
+	self.sent = True
+        return 1
 
