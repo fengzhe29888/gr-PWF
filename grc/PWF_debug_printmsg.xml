@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<block>
+  <name>debug_printmsg</name>
+  <key>PWF_debug_printmsg</key>
+  <category>PWF</category>
+  <import>import PWF</import>
+  <make>PWF.debug_printmsg($nlinks, $nt, $is_output)</make>
+
+  <param>
+    <name>Number of Links (L)</name>
+    <key>nlinks</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>TX Antenna Number</name>
+    <key>nt</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Input/Output</name>
+    <key>is_output</key>
+    <value>True</value>
+    <type>enum</type>
+    <option>
+    	<name>input</name>
+      	<key>False</key>
+    </option>
+    <option>
+      	<name>output</name>
+      	<key>True</key>
+    </option>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>$nt*$nt</vlen>
+    <nports>$nlinks</nports>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>$nt*$nt</vlen>
+    <nports>$nlinks</nports>
+  </source>
+</block>

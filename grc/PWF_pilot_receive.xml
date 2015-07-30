@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<block>
+  <name>pilot_receive</name>
+  <key>PWF_pilot_receive</key>
+  <category>PWF</category>
+  <import>import PWF</import>
+  <make>PWF.pilot_receive($pilot_seq, $nt, $pilot_length, $frame_length, $weight)</make>
+
+  <param>
+    <name>Pilots</name>
+    <key>pilot_seq</key>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>Number of Antennas</name>
+    <key>nt</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Pilot Length</name>
+    <key>pilot_length</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Frame Length</name>
+    <key>frame_length</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Weight</name>
+    <key>weight</key>
+    <type>float</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>$nt</vlen>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>$nt*$nt</vlen>
+  </source>
+</block>

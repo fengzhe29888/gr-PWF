@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<block>
+  <name>pilot_gen</name>
+  <key>PWF_pilot_gen</key>
+  <category>PWF</category>
+  <import>import PWF</import>
+  <make>PWF.pilot_gen($nt, $pilot_length, $pilot)</make>
+
+  <param>
+    <name>Number of Antennas</name>
+    <key>nt</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Pilot Length</name>
+    <key>pilot_length</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Pilot Sequence</name>
+    <key>pilot</key>
+    <type>raw</type>
+  </param>
+
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>$nt*$nt</vlen>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>$nt</vlen>
+  </source>
+</block>

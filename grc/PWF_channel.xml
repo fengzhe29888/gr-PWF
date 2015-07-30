@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<block>
+  <name>channel</name>
+  <key>PWF_channel</key>
+  <category>PWF</category>
+  <import>import PWF</import>
+  <make>PWF.channel($nlinks, $nt, $ichn_gain_dB, $H, $is_forward)</make>
+
+  <param>
+    <name>Number of Links (L)</name>
+    <key>nlinks</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>TX Antenna Number</name>
+    <key>nt</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>interference gain (dB)</name>
+    <key>ichn_gain_dB</key>
+    <value>10</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Channel (H)</name>
+    <key>H</key>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>Forward/Reverse</name>
+    <key>is_forward</key>
+    <value>True</value>
+    <type>enum</type>
+    <option>
+    	<name>forward</name>
+      	<key>True</key>
+    </option>
+    <option>
+      	<name>reverse</name>
+      	<key>False</key>
+    </option>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>$nt</vlen>
+    <nports>$nlinks</nports>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>$nt</vlen>
+    <nports>$nlinks</nports>
+  </source>
+</block>
