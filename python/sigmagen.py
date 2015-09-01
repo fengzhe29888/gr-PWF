@@ -66,8 +66,8 @@ class sigmagen(gr.sync_block):
 		output_items[l][0] = self.Sinit[l].reshape(self.nt*self.nt)	
 		self.sent = True
 	#=====================debugging msg========================
-	#print "Initial Sigmas ="
-	#print self.Sinit
+	print "Initial Sigmas ="
+	print self.Sinit
 	#==========================================================
        	return 1
 

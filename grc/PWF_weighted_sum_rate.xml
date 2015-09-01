@@ -4,7 +4,7 @@
   <key>PWF_weighted_sum_rate</key>
   <category>PWF</category>
   <import>import PWF</import>
-  <make>PWF.weighted_sum_rate($nlinks, $nt, $Pt, $H, $ichn_gain_dB, $weights, $rfrom_file, $filename)</make>
+  <make>PWF.weighted_sum_rate($nlinks, $nt, $Pt, $H, $ichn_gain_dB, $weights,$T, $rfrom_file, $filename)</make>
 
   <param>
     <name>Number of Links (L)</name>
@@ -37,6 +37,11 @@
   <param>
     <name>Weights</name>
     <key>weights</key>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>prewhiten matrix</name>
+    <key>T</key>
     <type>raw</type>
   </param>
   <param>

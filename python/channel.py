@@ -26,13 +26,14 @@ class channel(gr.sync_block):
     """
     docstring for block channel
     """
-    def __init__(self, nlinks,nt,ichn_gain_dB,H,is_forward,rfrom_file,filename):
+    def __init__(self, nlinks,nt,ichn_gain_dB,H,is_forward, noise, rfrom_file,filename):
         gr.sync_block.__init__(self,
             name="channel",
             in_sig=[(np.complex64, nt) for i in range(nlinks)],
             out_sig=[(np.complex64, nt) for i in range(nlinks)])
 	self.nlinks = nlinks
 	self.nt = nt
+	self.noise = noise
 	self.is_forward = is_forward #forward channel or reverse channel
 	ichn_gain = np.sqrt(np.power(10,np.true_divide(ichn_gain_dB,10))) #convert dB to linear
 	#======================read channel from file/variable============================
@@ -67,7 +68,8 @@ class channel(gr.sync_block):
 	Y = np.zeros((self.nlinks,length,self.nt), dtype = np.complex64)
 	for l in range(self.nlinks):
 		#===============assume noise covariance = I==========================
-		Y[l] = np.random.standard_normal(size=(length,self.nt))+np.random.standard_normal(size=(length,self.nt))*1j
+		#Y[l] = np.random.standard_normal(size=(length,self.nt))+np.random.standard_normal(size=(length,self.nt))*1j
+		Y[l] = np.random.multivariate_normal(self.nt*(0,),self.noise[l], length) + np.random.multivariate_normal(self.nt*(0,),self.noise[l], length)*1j
 		Y[l] = np.true_divide(Y[l],np.sqrt(2)).astype(np.complex64)
 		for k in range(self.nlinks):
 			if self.is_forward:

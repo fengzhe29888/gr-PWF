@@ -1,7 +1,7 @@
 import numpy as np
 nlinks = 2
 nt = 2
-f1=open('sigmagen_1.bin','rb')
+f1=open('sigmagen_10.bin','rb')
 content = np.fromfile(f1,dtype=np.complex64).reshape(nt,nlinks*nt,order='F')
 Sinit = np.zeros((nlinks,nt,nt), dtype = np.complex64)
 
@@ -13,6 +13,8 @@ for l in range(nlinks):
 #Sinit[1] = np.array([content[0][2],content[0][3],content[1][2],content[1][3]]).reshape(2,2)
 
 
-
-print content
-print Sinit
+print "nlinks is", nlinks
+print "nt is", nt
+print "content is",content
+print "sint is",Sinit
+print "size of Sinit",len(Sinit), len(Sinit[0][0])

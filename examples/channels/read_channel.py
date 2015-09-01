@@ -1,7 +1,7 @@
 import numpy as np
 nlinks=2
 nt=2
-f1=open('2x2channel_10dB_1.bin','rb')
+f1=open('2x2channel_10dB_10.bin','rb')
 content = np.fromfile(f1,dtype=np.complex64).reshape(nlinks*nt,nlinks*nt,order='F')
 #content_reshape = content.reshape(4,4,order='F')
 H = np.zeros((nlinks,nlinks,nt,nt), dtype = np.complex64)

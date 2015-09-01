@@ -20,8 +20,12 @@
 install(FILES
     PWF_sigmagen.xml
     PWF_pilot_gen.xml
+    PWF_pilot_gen_tx.xml
+    PWF_pilot_gen_rx.xml
     PWF_channel.xml
     PWF_pilot_receive.xml
+    PWF_pilot_receive_tx.xml
+    PWF_pilot_receive_rx.xml
     PWF_power_adjust.xml
     PWF_weighted_sum_rate.xml
     PWF_debug_printmsg.xml

@@ -26,7 +26,7 @@ class weighted_sum_rate(gr.sync_block):
     """
     docstring for block weighted_sum_rate
     """
-    def __init__(self, nlinks,nt,Pt,H,ichn_gain_dB,weights,rfrom_file,filename):
+    def __init__(self, nlinks,nt,Pt,H,ichn_gain_dB,weights,prewhiten,rfrom_file,filename):
         gr.sync_block.__init__(self,
             name="weighted_sum_rate",
             in_sig=[(np.complex64, nt*nt) for i in range(nlinks)], #input Sigma
@@ -36,6 +36,7 @@ class weighted_sum_rate(gr.sync_block):
 	self.Sigma = np.zeros((nlinks,nt,nt), dtype=np.complex64)
 	self.Omega = np.zeros((nlinks,nt,nt), dtype=np.complex64)
 	self.A = np.zeros((nlinks,nt,nt), dtype=np.complex64)
+	self.prewhiten = prewhiten
 	self.counter = 1
 	self.weights = weights
 	ichn_gain = np.sqrt(np.power(10,np.true_divide(ichn_gain_dB,10))) #convert dB to linear
@@ -90,12 +91,16 @@ class weighted_sum_rate(gr.sync_block):
 		self.Omega[l] = np.identity(self.nt,dtype=np.complex64)
 		for k in range(self.nlinks):
 			if k!=l:
-				tmp = np.dot(self.H[l][k],self.Sigma[k])
-				self.Omega[l] = self.Omega[l] + np.dot(tmp,self.H[l][k].transpose().conj())
+				tmp1 = np.dot(self.prewhiten[l], self.H[l][k])
+				tmp2 = np.dot(tmp1,self.Sigma[k])
+				tmp3 = np.dot(tmp2, self.H[l][k].transpose().conj())
+				self.Omega[l] = self.Omega[l] + np.dot(tmp3,self.prewhiten[l])
 
 	R = 0
 	for l in range(self.nlinks):
-		self.A[l] = np.dot(np.dot(self.H[l][l],self.Sigma[l]),self.H[l][l].transpose().conj())
+		tmp4 = np.dot(self.prewhiten[l], self.H[l][l])
+		tmp5 = np.dot(np.dot(tmp4, self.Sigma[l]),self.H[l][l].transpose().conj())
+		self.A[l] = np.dot(tmp5, self.prewhiten[l])
 		R = R + np.dot(self.weights[l],np.log2(np.linalg.det(self.Omega[l]+self.A[l]))-np.log2(np.linalg.det(self.Omega[l])))
 
 	output_items[0][0] = np.real(R)

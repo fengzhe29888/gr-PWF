@@ -33,8 +33,12 @@ GR_PYTHON_INSTALL(
     __init__.py
     sigmagen.py
     pilot_gen.py
+    pilot_gen_tx.py
+    pilot_gen_rx.py
     channel.py
     pilot_receive.py
+    pilot_receive_tx.py
+    pilot_receive_rx.py
     power_adjust.py
     weighted_sum_rate.py
     debug_printmsg.py
