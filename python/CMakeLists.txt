@@ -38,7 +38,9 @@ GR_PYTHON_INSTALL(
     channel.py
     pilot_receive.py
     pilot_receive_tx.py
+    pilot_receive_tx_sync.py
     pilot_receive_rx.py
+    pilot_receive_rx_sync.py
     power_adjust.py
     weighted_sum_rate.py
     debug_printmsg.py
@@ -52,3 +54,4 @@ include(GrTest)
 
 set(GR_TEST_TARGET_DEPS gnuradio-PWF)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
+GR_ADD_TEST(qa_channel ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_channel.py)

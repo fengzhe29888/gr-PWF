@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <?grc format='1' created='3.7.9'?>
 <flow_graph>
-  <timestamp>Mon Sep  7 20:46:20 2015</timestamp>
+  <timestamp>Tue Sep  8 09:49:12 2015</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -14,7 +14,7 @@
     </param>
     <param>
       <key>window_size</key>
-      <value>2000,2000</value>
+      <value>2048, 2048</value>
     </param>
     <param>
       <key>category</key>
@@ -34,7 +34,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 8)</value>
+      <value>(10, 10)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -46,7 +46,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>phase_corrector</value>
+      <value>time_sync</value>
     </param>
     <param>
       <key>max_nouts</key>
@@ -70,7 +70,7 @@
     </param>
     <param>
       <key>title</key>
-      <value>phase_corrector</value>
+      <value>time_sync</value>
     </param>
   </block>
   <block>
@@ -81,11 +81,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 160)</value>
+      <value>(10, 170)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -101,7 +101,7 @@
     </param>
   </block>
   <block>
-    <key>analog_pll_refout_cc</key>
+    <key>parameter</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -111,16 +111,12 @@
       <value></value>
     </param>
     <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(440, 368)</value>
+      <value>(904, 3)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -128,31 +124,27 @@
     </param>
     <param>
       <key>id</key>
-      <value>analog_pll_refout_cc_0</value>
+      <value>Q</value>
     </param>
     <param>
-      <key>w</key>
-      <value>loop_bandwidth</value>
+      <key>label</key>
+      <value>Q</value>
     </param>
     <param>
-      <key>max_freq</key>
-      <value>max_freq</value>
+      <key>short_id</key>
+      <value></value>
     </param>
     <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
+      <key>type</key>
+      <value></value>
     </param>
     <param>
-      <key>min_freq</key>
-      <value>-max_freq</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
+      <key>value</key>
+      <value>1</value>
     </param>
   </block>
   <block>
-    <key>blocks_conjugate_cc</key>
+    <key>blocks_complex_to_mag_squared</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -171,7 +163,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(656, 392)</value>
+      <value>(584, 240)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -179,46 +171,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_conjugate_cc_0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_multiply_conjugate_cc</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(544, 129)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>blocks_multiply_conjugate_cc_0</value>
+      <value>blocks_complex_to_mag_squared_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -234,7 +187,11 @@
     </param>
   </block>
   <block>
-    <key>blocks_multiply_xx</key>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
     <param>
       <key>alias</key>
       <value></value>
@@ -252,8 +209,12 @@
       <value>True</value>
     </param>
     <param>
+      <key>file</key>
+      <value>/home/zhe/Dropbox/gnuradio_trunk/gnufiles/matched</value>
+    </param>
+    <param>
       <key>_coordinate</key>
-      <value>(432, 624)</value>
+      <value>(824, 131)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -261,23 +222,113 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_multiply_xx_0</value>
+      <value>blocks_file_sink_0_0_0_1_1_1_1</value>
     </param>
     <param>
       <key>type</key>
-      <value>complex</value>
+      <value>float</value>
     </param>
     <param>
-      <key>maxoutbuf</key>
+      <key>unbuffered</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/zhe/Dropbox/gnuradio_trunk/gnufiles/avg</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(968, 451)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
       <value>0</value>
     </param>
     <param>
-      <key>minoutbuf</key>
+      <key>id</key>
+      <value>blocks_file_sink_0_0_0_1_1_1_1_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_null_sink</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>bus_conns</key>
+      <value>[[0,],]</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(968, 400)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
       <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_null_sink_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
     </param>
     <param>
       <key>num_inputs</key>
-      <value>2</value>
+      <value>1</value>
     </param>
     <param>
       <key>vlen</key>
@@ -285,7 +336,11 @@
     </param>
   </block>
   <block>
-    <key>blocks_vector_source_x</key>
+    <key>blocks_peak_detector2_fb</key>
+    <param>
+      <key>alpha</key>
+      <value>0.001</value>
+    </param>
     <param>
       <key>alias</key>
       <value></value>
@@ -304,7 +359,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(336, 187)</value>
+      <value>(784, 219)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -312,7 +367,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_vector_source_x_0_1</value>
+      <value>blocks_peak_detector2_fb_0</value>
+    </param>
+    <param>
+      <key>look_ahead</key>
+      <value>look_ahead</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -323,28 +382,55 @@
       <value>0</value>
     </param>
     <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>repeat</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>tags</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>vector</key>
-      <value>training_sequence</value>
+      <key>threshold_factor_rise</key>
+      <value>factor</value>
     </param>
   </block>
   <block>
-    <key>digital_clock_recovery_mm_xx</key>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(664, 3)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>factor</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>factor</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>100</value>
+    </param>
+  </block>
+  <block>
+    <key>fir_filter_xxx</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -358,28 +444,24 @@
       <value></value>
     </param>
     <param>
+      <key>decim</key>
+      <value>Q</value>
+    </param>
+    <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(960, 291)</value>
+      <value>(360, 227)</value>
     </param>
     <param>
       <key>_rotation</key>
       <value>0</value>
     </param>
     <param>
-      <key>gain_mu</key>
-      <value>0.175</value>
-    </param>
-    <param>
-      <key>gain_omega</key>
-      <value>0.25*0.175*0.175</value>
-    </param>
-    <param>
       <key>id</key>
-      <value>digital_clock_recovery_mm_xx_0</value>
+      <value>fir_filter_xxx_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -390,20 +472,16 @@
       <value>0</value>
     </param>
     <param>
-      <key>mu</key>
-      <value>0.5</value>
+      <key>samp_delay</key>
+      <value>0</value>
     </param>
     <param>
-      <key>omega_relative_limit</key>
-      <value>0.005</value>
-    </param>
-    <param>
-      <key>omega</key>
-      <value>samp_per_sym*(1+0.0)</value>
+      <key>taps</key>
+      <value>training_sequence[::-1]</value>
     </param>
     <param>
       <key>type</key>
-      <value>complex</value>
+      <value>ccc</value>
     </param>
   </block>
   <block>
@@ -422,7 +500,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(856, 19)</value>
+      <value>(360, 27)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -434,7 +512,7 @@
     </param>
     <param>
       <key>import</key>
-      <value>import numpy</value>
+      <value>import numpy as np</value>
     </param>
   </block>
   <block>
@@ -453,7 +531,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(512, -5)</value>
+      <value>(784, 3)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -461,11 +539,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>loop_bandwidth</value>
+      <value>look_ahead</value>
     </param>
     <param>
       <key>label</key>
-      <value></value>
+      <value>look_ahead</value>
     </param>
     <param>
       <key>short_id</key>
@@ -477,50 +555,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>2*numpy.pi*0.005</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(640, 3)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>max_freq</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value></value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value></value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>2*numpy.pi*0.01</value>
+      <value>4011</value>
     </param>
   </block>
   <block>
@@ -535,7 +570,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(608, 635)</value>
+      <value>(1040, 219)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -543,15 +578,58 @@
     </param>
     <param>
       <key>id</key>
-      <value>pad_sink_0_0_1</value>
+      <value>pad_sink_0</value>
     </param>
     <param>
       <key>type</key>
-      <value>complex</value>
+      <value>byte</value>
     </param>
     <param>
       <key>label</key>
-      <value>corrected_out</value>
+      <value>flags</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>pad_sink</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1056, 275)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>pad_sink_1</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>debug</value>
     </param>
     <param>
       <key>num_streams</key>
@@ -578,7 +656,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(176, 123)</value>
+      <value>(216, 235)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -625,7 +703,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(376, -5)</value>
+      <value>(504, 3)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -637,7 +715,7 @@
     </param>
     <param>
       <key>label</key>
-      <value></value>
+      <value>training_sequence</value>
     </param>
     <param>
       <key>short_id</key>
@@ -649,49 +727,55 @@
     </param>
     <param>
       <key>value</key>
-      <value>0</value>
+      <value>(1,)</value>
     </param>
   </block>
   <connection>
-    <source_block_id>analog_pll_refout_cc_0</source_block_id>
-    <sink_block_id>blocks_conjugate_cc_0</sink_block_id>
+    <source_block_id>blocks_complex_to_mag_squared_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_0_0_1_1_1_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_conjugate_cc_0</source_block_id>
-    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
+    <source_block_id>blocks_complex_to_mag_squared_0</source_block_id>
+    <sink_block_id>blocks_peak_detector2_fb_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_conjugate_cc_0</source_block_id>
-    <sink_block_id>analog_pll_refout_cc_0</sink_block_id>
+    <source_block_id>blocks_peak_detector2_fb_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_0_0_1_1_1_1_0</sink_block_id>
+    <source_key>1</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_peak_detector2_fb_0</source_block_id>
+    <sink_block_id>blocks_null_sink_0</sink_block_id>
+    <source_key>1</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_peak_detector2_fb_0</source_block_id>
+    <sink_block_id>pad_sink_1</sink_block_id>
+    <source_key>1</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_peak_detector2_fb_0</source_block_id>
+    <sink_block_id>pad_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_xx_0</source_block_id>
-    <sink_block_id>pad_sink_0_0_1</sink_block_id>
+    <source_block_id>fir_filter_xxx_0</source_block_id>
+    <sink_block_id>blocks_complex_to_mag_squared_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_vector_source_x_0_1</source_block_id>
-    <sink_block_id>blocks_multiply_conjugate_cc_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
   </connection>
   <connection>
     <source_block_id>pad_source_0</source_block_id>
-    <sink_block_id>blocks_multiply_conjugate_cc_0</sink_block_id>
+    <sink_block_id>fir_filter_xxx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>pad_source_0</source_block_id>
-    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
   </connection>
 </flow_graph>

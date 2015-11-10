@@ -38,6 +38,7 @@ class channel(gr.sync_block):
 	ichn_gain = np.sqrt(np.power(10,np.true_divide(ichn_gain_dB,10))) #convert dB to linear
 	#======================read channel from file/variable============================
 	self.H = np.zeros((nlinks,nlinks,nt,nt), dtype = np.complex64)
+	self.accum_length = 0
 	if rfrom_file:
 	#read channel from 'filename'
 		f1=open(filename,'rb')
@@ -65,6 +66,9 @@ class channel(gr.sync_block):
 
     def work(self, input_items, output_items):
 	length = len(input_items[0]) #input length
+	self.accum_length = self.accum_length + length
+	#print "length is", length
+	#print "accumulate length is", self.accum_length
 	Y = np.zeros((self.nlinks,length,self.nt), dtype = np.complex64)
 	for l in range(self.nlinks):
 		#===============assume noise covariance = I==========================

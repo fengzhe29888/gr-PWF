@@ -38,7 +38,9 @@ from pilot_gen_rx import pilot_gen_rx
 from channel import channel
 from pilot_receive import pilot_receive
 from pilot_receive_tx import pilot_receive_tx
+from pilot_receive_tx_sync import pilot_receive_tx_sync
 from pilot_receive_rx import pilot_receive_rx
+from pilot_receive_rx_sync import pilot_receive_rx_sync
 from power_adjust import power_adjust
 from weighted_sum_rate import weighted_sum_rate
 from debug_printmsg import debug_printmsg
