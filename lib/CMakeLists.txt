@@ -25,7 +25,7 @@ include(GrPlatform) #define LIB_SUFFIX
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 list(APPEND PWF_sources
-    )
+    rx_frame_sync_impl.cc )
 
 set(PWF_sources "${PWF_sources}" PARENT_SCOPE)
 if(NOT PWF_sources)

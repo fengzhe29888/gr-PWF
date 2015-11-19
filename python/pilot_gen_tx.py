@@ -47,6 +47,9 @@ class pilot_gen_tx(gr.interp_block):
         in0 = input_items[0]
         out = output_items[0]
 	Sigma = in0[0].reshape((self.nt,self.nt))
+	#=====================debugging msg========================
+	print "The Sigmas ="
+	print Sigma
 	U, d, V = np.linalg.svd(Sigma) #SVD, d is a 1-d array, need to convert to a matrix D
 	D = np.zeros((self.nt,self.nt))
 	np.fill_diagonal(D,d)

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<block>
+  <name>rx_frame_sync</name>
+  <key>PWF_rx_frame_sync</key>
+  <category>PWF</category>
+  <import>import PWF</import>
+  <make>PWF.rx_frame_sync($pilot_length)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+
+  <param>
+    <name>pilot_length</name>
+    <key>pilot_length</key>
+    <type>int</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in_data</name>
+    <type>complex</type>
+  </sink>
+  <sink>
+    <name>in_flags</name>
+    <type>byte</type>
+    <vlen>$1</vlen>
+  </sink>
+
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>

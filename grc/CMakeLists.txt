@@ -16,7 +16,6 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-
 install(FILES
     PWF_sigmagen.xml
     PWF_pilot_gen.xml
@@ -32,5 +31,6 @@ install(FILES
     PWF_weighted_sum_rate.xml
     PWF_debug_printmsg.xml
     PWF_identity_sum_rate.xml
-    PWF_channel.xml DESTINATION share/gnuradio/grc/blocks
+    PWF_channel.xml
+    PWF_rx_frame_sync.xml DESTINATION share/gnuradio/grc/blocks
 )

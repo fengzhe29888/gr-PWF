@@ -43,6 +43,7 @@ class pilot_receive_tx_sync(gr.basic_block):
 	self.pilot_length = pilot_length
 	self.frame_length = frame_length
 	self.weight = weight
+	self.state = 0
         #self.set_history(self.frame_length)
 	#self.scounter = 0 #symbol count
 	#self.fcounter = 1 #frame count
@@ -52,33 +53,29 @@ class pilot_receive_tx_sync(gr.basic_block):
         in0 = input_items[0]
 	flags = input_items[1]
         out = output_items[0]
-	if len(in0) != self.frame_length:
-		print "pilot receive input buffer size != frame length"
-	for i in range(len(in0)):
-		print "loop to",i
-		if flags[i] != 0:
-			print "reverse input flag is",i
-			Y = in0[i-self.pilot_length+1:i+1]
-			corr = np.true_divide(np.dot(Y.transpose(),self.pilot_seq.conj()),self.pilot_length) #nt x nt
-			#=====================debugging msg========================
-			#print "Pilot detected! Estimated channel = "
-			#print corr
-			
-#==========================================================
-			A = np.dot(corr,corr.transpose().conj())
-			B = np.true_divide(np.dot(Y.transpose(),Y.conj()),self.pilot_length)
-			Omega_hat = B-A
-			Omega = Omega_hat - self.NHAT + np.identity(self.nt)
-			Sigma = np.dot(np.linalg.pinv(Omega)-np.linalg.pinv(B),self.weight) #nt x nt
-			#=====================debugging msg========================
-			print "Pilot detected! reverse link rx sync Sigma ="
-			print Sigma
-			#==========================================================
-			out[0] = Sigma.reshape(self.nt*self.nt)
-			break
-	self.consume(0,len(in0))
-	self.consume(1,len(in0))
-
-        return 1
-
-
+	if len(in0) !=len(flags):
+	  print "TX:input length buffer DOESN'T EQUAL"
+	len_in = min(len(in0), len(flags))
+	if self.state == 0:
+	  for i in range(len_in):
+	    if flags[i] == 1:
+	      print "TX: FLAG FOUND!!!", i
+              self.state =1
+	      self.consume(0,i+1)
+	      self.consume(1,i+1)
+              return 0
+        if self.state == 1:
+	  Y = in0[-self.pilot_length:0]
+	  corr = np.true_divide(np.dot(Y.transpose(),self.pilot_seq.conj()),self.pilot_length)
+	  A = np.dot(corr,corr.transpose().conj())
+	  B = np.true_divide(np.dot(Y.transpose(),Y.conj()),self.pilot_length)
+	  Omega_hat = B-A
+	  Omega = Omega_hat - self.NHAT + np.identity(self.nt)
+	  Sigma = np.dot(np.linalg.pinv(Omega)-np.linalg.pinv(B),self.weight) #nt x nt
+	  #=====================debugging msg========================
+	  print "Pilot detected! TX sync Sigma ="
+	  print Sigma
+          out[:]=Sigma.reshape(self.nt*self.nt)
+	  self.consume(0,len_in)
+	  self.consume(1,len_in)
+          return 1

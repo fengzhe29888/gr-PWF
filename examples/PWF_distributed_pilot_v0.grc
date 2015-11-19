@@ -398,7 +398,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>3</value>
+      <value>2</value>
     </param>
   </block>
   <block>
@@ -494,7 +494,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1040, 155)</value>
+      <value>(776, 171)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -571,6 +571,33 @@
     </param>
     <param>
       <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(952, 83)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>pilot1</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>np.array([1,1,-1,1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,-1,1,1,1,-1,1,1,1,1,-1,1,1,-1,1,-1,-1,-1,1,-1,-1,1,-1,1,1,1,-1,-1,-1,1,-1,-1,-1,1,-1,1,1,-1,1,1,1,-1,1,-1,-1,-1,1,1,1,-1,1,-1,-1,1,-1,1,1,-1,1,-1,-1,-1,1,-1,-1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,1,1,1,-1,1,1,1,1,-1,1,1,1,-1,1,1,-1,1,-1,-1,-1,1,1,1,-1,1,1,1,1,-1,-1,-1,-1,1,1,1,-1,1,-1,-1,-1,1,1,1,1,-1,-1,-1,-1,1,-1,-1,-1,1,1,1,-1,1,-1,-1,1,-1,-1,-1,-1,1,-1,-1,-1,1,1,1,1,-1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,1,-1,-1,-1,1,-1,-1,1,-1,-1,-1,-1,1,1,1,-1,1,-1,-1,-1,1,-1,-1,1,-1,1,1,1,-1,1,1,-1,1,1,1,1,-1,1,1,1,-1,-1,-1,-1,1,-1,-1,1,-1,1,1,1,-1])</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
@@ -588,6 +615,33 @@
     <param>
       <key>value</key>
       <value>prefix+'/pilots/pilot1_4000.bin'</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(952, 147)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>pilot2</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>np.array([1,1,-1,1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,-1,1,1,1,-1,1,1,1,-1,1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,1,-1,1,1,-1,1,1,1,-1,1,1,1,-1,1,-1,-1,-1,1,1,1,-1,1,-1,-1,-1,1,1,1,-1,1,1,1,-1,1,1,1,1,-1,1,1,1,-1,-1,-1,-1,1,1,1,-1,1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,-1,1,1,1,-1,1,-1,-1,-1,1,1,1,1,-1,1,1,-1,1,-1,-1,1,-1,1,1,1,-1,1,1,1,-1,-1,-1,1,-1,1,1,1,-1,1,1,-1,1,1,1,-1,1,-1,-1,1,-1,1,1,1,-1,-1,-1,1,-1,1,1,-1,1,1,1,1,-1,-1,-1,-1,1,1,1,-1,1,-1,-1,1,-1,-1,-1,1,-1,1,1,1,-1,1,1,-1,1,-1,-1,-1,1,-1,-1,-1,1,1,1,1,-1,-1,-1,1,-1,1,1,-1,1,1,1,-1,1,-1,-1,1,-1,-1,-1,-1,1,1,1,1,-1,1,1,-1,1,-1,-1,1,-1,-1,-1,1,-1,1,1,-1,1,-1,-1,-1,1,-1,-1,-1,1,1,1,-1,1,-1,-1,1,-1])</value>
     </param>
   </block>
   <block>
@@ -737,7 +791,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(888, 219)</value>
+      <value>(776, 243)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -884,7 +938,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>4000</value>
+      <value>128</value>
     </param>
   </block>
   <block>
@@ -1136,11 +1190,11 @@
     </param>
     <param>
       <key>pilot</key>
-      <value>pilot_seq_2</value>
+      <value>pilot2.reshape(tlen,2)</value>
     </param>
     <param>
       <key>rfrom_file</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>pre_whiten</key>
@@ -1199,11 +1253,11 @@
     </param>
     <param>
       <key>pilot</key>
-      <value>pilot_seq_1</value>
+      <value>pilot1.reshape(tlen,2)</value>
     </param>
     <param>
       <key>rfrom_file</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>pre_whiten</key>
@@ -1262,11 +1316,11 @@
     </param>
     <param>
       <key>pilot</key>
-      <value>pilot_seq_1</value>
+      <value>pilot1.reshape(tlen,2)</value>
     </param>
     <param>
       <key>rfrom_file</key>
-      <value>True</value>
+      <value>False</value>
     </param>
   </block>
   <block>
@@ -1321,11 +1375,11 @@
     </param>
     <param>
       <key>pilot</key>
-      <value>pilot_seq_2</value>
+      <value>pilot2.reshape(tlen,2)</value>
     </param>
     <param>
       <key>rfrom_file</key>
-      <value>True</value>
+      <value>False</value>
     </param>
   </block>
   <block>
@@ -1384,7 +1438,7 @@
     </param>
     <param>
       <key>pilot_seq</key>
-      <value>pilot_seq_1</value>
+      <value>pilot1.reshape(tlen,2)</value>
     </param>
     <param>
       <key>pre_whiten</key>
@@ -1392,7 +1446,7 @@
     </param>
     <param>
       <key>rfrom_file</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>weight</key>
@@ -1455,7 +1509,7 @@
     </param>
     <param>
       <key>pilot_seq</key>
-      <value>pilot_seq_2</value>
+      <value>pilot2.reshape(tlen,2)</value>
     </param>
     <param>
       <key>pre_whiten</key>
@@ -1463,7 +1517,7 @@
     </param>
     <param>
       <key>rfrom_file</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>weight</key>
@@ -1526,11 +1580,11 @@
     </param>
     <param>
       <key>pilot_seq</key>
-      <value>pilot_seq_2</value>
+      <value>pilot2.reshape(tlen,2)</value>
     </param>
     <param>
       <key>rfrom_file</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>weight</key>
@@ -1597,11 +1651,11 @@
     </param>
     <param>
       <key>pilot_seq</key>
-      <value>pilot_seq_1</value>
+      <value>pilot1.reshape(tlen,2)</value>
     </param>
     <param>
       <key>rfrom_file</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>weight</key>
@@ -1868,57 +1922,6 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>file</key>
-      <value>/home/zhe/Dropbox/gnuradio_trunk/gnufiles/sigma0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(200, 267)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>blocks_file_sink_0_0_0_0</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>unbuffered</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>8</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_file_sink</key>
-    <param>
-      <key>append</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
@@ -1927,7 +1930,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1248, 603)</value>
+      <value>(1248, 579)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1978,7 +1981,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1416, 507)</value>
+      <value>(1416, 483)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1987,6 +1990,108 @@
     <param>
       <key>id</key>
       <value>blocks_file_sink_0_0_0_0_3</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>4</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/zhe/Dropbox/gnuradio_trunk/gnufiles/sigma42</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(392, 1131)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_file_sink_0_0_0_0_3_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>4</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/zhe/Dropbox/gnuradio_trunk/gnufiles/sigma44</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(696, 1291)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_file_sink_0_0_0_0_3_0_0</value>
     </param>
     <param>
       <key>type</key>
@@ -2131,7 +2236,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1296, 219)</value>
+      <value>(1296, 195)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2182,7 +2287,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1432, 299)</value>
+      <value>(1432, 275)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2191,6 +2296,108 @@
     <param>
       <key>id</key>
       <value>blocks_file_sink_0_0_0_3</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>4</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/zhe/Dropbox/gnuradio_trunk/gnufiles/sigma41</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(408, 923)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_file_sink_0_0_0_3_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>4</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/zhe/Dropbox/gnuradio_trunk/gnufiles/sigma43</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(784, 819)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_file_sink_0_0_0_3_0_0</value>
     </param>
     <param>
       <key>type</key>
@@ -3114,8 +3321,20 @@
     <sink_key>1</sink_key>
   </connection>
   <connection>
+    <source_block_id>PWF_pilot_receive_tx_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_0_0_3_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>PWF_pilot_receive_tx_0_0</source_block_id>
     <sink_block_id>PWF_power_adjust_1_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_pilot_receive_tx_0_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_0_0_0_3_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -3145,8 +3364,20 @@
   </connection>
   <connection>
     <source_block_id>PWF_power_adjust_1_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_0_0_0_3_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_power_adjust_1_0</source_block_id>
     <sink_block_id>blocks_streams_to_vector_0_0</sink_block_id>
     <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>PWF_power_adjust_1_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_0_0_3_0</sink_block_id>
+    <source_key>1</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
@@ -3212,12 +3443,6 @@
   <connection>
     <source_block_id>blocks_streams_to_vector_0_0</source_block_id>
     <sink_block_id>blocks_udp_sink_1_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_udp_source_1</source_block_id>
-    <sink_block_id>blocks_file_sink_0_0_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

@@ -22,5 +22,5 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/PWF
+    rx_frame_sync.h DESTINATION include/PWF
 )
