@@ -56,9 +56,13 @@ class pilot_receive_rx(gr.decim_block):
 		Y0 = in0[:self.pilot_length]
 		Y = np.dot(self.prewhiten, Y0.transpose())
 		Y = Y.transpose()
+		#=====================debugging msg========================
+		#print "!!!!! received = "
+		#print Y
+		#==========================================================
 		corr = np.true_divide(np.dot(Y.transpose(),self.pilot_seq.conj()),self.pilot_length) #nt x nt
 		#=====================debugging msg========================
-		#print "Pilot detected! Estimated channel = "
+		#print "Estimated Channel! Estimated channel = "
 		#print corr
 		#==========================================================
 		A = np.dot(corr,corr.transpose().conj())

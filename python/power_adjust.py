@@ -48,6 +48,8 @@ class power_adjust(gr.sync_block):
 	#=====================debugging msg========================
 	#print "alpha ="
 	#print alpha
+	print "recovered Sigma = "
+	print Sigma
 	#==========================================================
 	
 	for l in range(self.nlinks):
