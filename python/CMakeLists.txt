@@ -44,7 +44,10 @@ GR_PYTHON_INSTALL(
     power_adjust.py
     weighted_sum_rate.py
     debug_printmsg.py
-    identity_sum_rate.py DESTINATION ${GR_PYTHON_DIR}/PWF
+    identity_sum_rate.py
+    ML_frame_sync.py
+    weighted_sum_rate_usrp.py
+    pilot_receive_usrp.py DESTINATION ${GR_PYTHON_DIR}/PWF
 )
 
 ########################################################################

@@ -45,4 +45,7 @@ from power_adjust import power_adjust
 from weighted_sum_rate import weighted_sum_rate
 from debug_printmsg import debug_printmsg
 from identity_sum_rate import identity_sum_rate
+from ML_frame_sync import ML_frame_sync
+from weighted_sum_rate_usrp import weighted_sum_rate_usrp
+from pilot_receive_usrp import pilot_receive_usrp
 #

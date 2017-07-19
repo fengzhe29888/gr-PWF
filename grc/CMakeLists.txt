@@ -32,5 +32,8 @@ install(FILES
     PWF_debug_printmsg.xml
     PWF_identity_sum_rate.xml
     PWF_channel.xml
-    PWF_rx_frame_sync.xml DESTINATION share/gnuradio/grc/blocks
+    PWF_rx_frame_sync.xml
+    PWF_ML_frame_sync.xml
+    PWF_weighted_sum_rate_usrp.xml
+    PWF_pilot_receive_usrp.xml DESTINATION share/gnuradio/grc/blocks
 )

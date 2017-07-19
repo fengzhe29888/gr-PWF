@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<block>
+  <name>weighted_sum_rate_usrp</name>
+  <key>PWF_weighted_sum_rate_usrp</key>
+  <category>[PWF]</category>
+  <import>import PWF</import>
+  <make>PWF.weighted_sum_rate_usrp($nlinks, $nt, $Pt, $weights)</make>
+  <param>
+    <name>Number of Links (L)</name>
+    <key>nlinks</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>TX Antenna Number</name>
+    <key>nt</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Total Power (Pt)</name>
+    <key>Pt</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Weights</name>
+    <key>weights</key>
+    <type>raw</type>
+  </param>
+
+  <sink>
+    <name>in_sigma</name>
+    <type>complex</type>
+    <vlen>$nt*$nt</vlen>
+    <nports>$nlinks</nports>
+  </sink>
+
+  <sink>
+    <name>in_A</name>
+    <type>complex</type>
+    <vlen>$nt*$nt</vlen>
+    <nports>$nlinks</nports>
+  </sink>
+
+  <sink>
+    <name>in_B</name>
+    <type>complex</type>
+    <vlen>$nt*$nt</vlen>
+    <nports>$nlinks</nports>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
